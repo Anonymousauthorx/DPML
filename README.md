@@ -6,8 +6,12 @@ NumPy <br>
 PyTorch>=1.4 <br>
 # Meta-Learning
 For training meta-model on MOTSP-20 instances: <br>
-python run.py --graph_size 20 --CUDA_VISIBLE_ID "0" --is_train --meta_iterations 10000
+    python run.py --graph_size 20 --CUDA_VISIBLE_ID "0" --is_train --meta_iterations 10000
 For training meta-model on MOTSP-50 instances: <br>
-python run.py --graph_size 50 --CUDA_VISIBLE_ID "0" --is_train --meta_iterations 5000
+    python run.py --graph_size 50 --CUDA_VISIBLE_ID "0" --is_train --meta_iterations 5000
 You can initialize or resume a run using a pretrained meta-model by using the --load_path option, e.g.: <br>
-python run.py --graph_size 50 --is_load --load_path "meta-model-MOTSP50.pt" --CUDA_VISIBLE_ID "0" --is_train --meta_iterations 10000 --start_meta_iteration 5000
+    python run.py --graph_size 50 --is_load --load_path "meta-model-MOTSP50.pt" --CUDA_VISIBLE_ID "0" --is_train --meta_iterations 10000 --start_meta_iteration 5000
+# Transfer-Learning
+For training all the submodels with transfer-learning by loading the well trained 1st-submodel on MOTSP-50 instances with 10-step per subproblem: <br>
+    python run.py --graph_size 50 --is_load --load_path "model-0.pt" --CUDA_VISIBLE_ID "0" --is_transfer --is_test --update_step_test 10
+    
